@@ -1,9 +1,11 @@
+import subprocess
 Sure! Here's a Python script for an AI chatbot that helps the user run the "main.py" program locally on their PC:
 
 ```python
-import subprocess
 
 # Function to run the main.py program
+
+
 def run_program():
     try:
         subprocess.run(["python", "main.py"])
@@ -13,6 +15,8 @@ def run_program():
         print(f"An error occurred while running the program.\n{e}")
 
 # Function to handle user input and execute commands
+
+
 def handle_command(command):
     if command.lower() == "run":
         run_program()
@@ -26,6 +30,7 @@ def handle_command(command):
         exit()
     else:
         print("Invalid command. Type 'help' to see available commands.")
+
 
 # Main loop
 while True:
