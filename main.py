@@ -14,7 +14,6 @@ from tkinter import filedialog
 from tkinter import messagebox
 from retry import retry
 
-
 class ExpenseManager:
     def __init__(self):
         self.transactions = []
@@ -116,23 +115,23 @@ class ExpenseManager:
             optimization_result = self.optimize_budget()
             optimization_label.config(text=optimization_result)
 
-        def monitor_expenses():
+        def monitor_expenses_func():
             self.monitor_expenses()
             messagebox.showinfo(
                 "Expense Monitoring", "Expense monitoring activated. You will receive alerts if any category exceeds 80% of budget.")
 
-        def purchase_recommendations():
+        def purchase_recommendations_func():
             user_preferences = self.get_user_preferences()
             purchase_recommendations = self.make_purchase_recommendations(
                 user_preferences)
             recommendation_list.insert(
                 END, "\n".join(purchase_recommendations))
 
-        def fetch_bills():
+        def fetch_bills_func():
             bills = self.fetch_bills()
             bill_list.insert(END, "\n".join(bills))
 
-        def suggest_savings_investment():
+        def suggest_savings_investment_func():
             financial_goals = self.get_financial_goals()
             risk_tolerance = self.get_risk_tolerance()
             savings_investment_recommendations = self.suggest_savings_investment(
@@ -140,11 +139,11 @@ class ExpenseManager:
             suggestion_list.insert(END, "\n".join(
                 savings_investment_recommendations))
 
-        def optimize_expenses():
+        def optimize_expenses_func():
             expense_optimization = self.optimize_expenses()
             optimization_list.insert(END, "\n".join(expense_optimization))
 
-        def track_financial_goals():
+        def track_financial_goals_func():
             financial_goals = self.get_financial_goals()
             progress = self.track_financial_goals(financial_goals)
             progress_list.insert(END, "\n".join(progress))
@@ -168,7 +167,7 @@ class ExpenseManager:
         optimization_label = Label(income_frame, text="")
         optimization_label.grid(row=1, column=0, columnspan=3)
 
-        Button(root, text="Monitor Expenses", command=monitor_expenses).grid(
+        Button(root, text="Monitor Expenses", command=monitor_expenses_func).grid(
             row=3, column=0, padx=10, pady=5)
 
         recommendation_frame = Frame(root)
@@ -178,7 +177,7 @@ class ExpenseManager:
         recommendation_list = Listbox(recommendation_frame, width=50)
         recommendation_list.grid(row=1, column=0)
         recommendation_button = Button(
-            recommendation_frame, text="Get Recommendations", command=purchase_recommendations)
+            recommendation_frame, text="Get Recommendations", command=purchase_recommendations_func)
         recommendation_button.grid(row=2, column=0)
 
         bills_frame = Frame(root)
@@ -187,7 +186,7 @@ class ExpenseManager:
         bill_list = Listbox(bills_frame, width=50)
         bill_list.grid(row=1, column=0)
         bill_button = Button(
-            bills_frame, text="Fetch Bills", command=fetch_bills)
+            bills_frame, text="Fetch Bills", command=fetch_bills_func)
         bill_button.grid(row=2, column=0)
 
         suggestion_frame = Frame(root)
@@ -197,61 +196,11 @@ class ExpenseManager:
         suggestion_list = Listbox(suggestion_frame, width=50)
         suggestion_list.grid(row=1, column=0)
         suggestion_button = Button(
-            suggestion_frame, text="Get Suggestions", command=suggest_savings_investment)
+            suggestion_frame, text="Get Suggestions", command=suggest_savings_investment_func)
         suggestion_button.grid(row=2, column=0)
 
         optimization_frame = Frame(root)
         optimization_frame.grid(row=5, column=1, padx=10, pady=5)
         Label(optimization_frame, text="Expense Optimization:").grid(
             row=0, column=0)
-        optimization_list = Listbox(optimization_frame, width=50)
-        optimization_list.grid(row=1, column=0)
-        optimization_button = Button(
-            optimization_frame, text="Optimize Expenses", command=optimize_expenses)
-        optimization_button.grid(row=2, column=0)
-
-        progress_frame = Frame(root)
-        progress_frame.grid(row=6, column=0, padx=10, pady=5)
-        Label(progress_frame, text="Financial Goal Tracking:").grid(
-            row=0, column=0)
-        progress_list = Listbox(progress_frame, width=50)
-        progress_list.grid(row=1, column=0)
-        progress_button = Button(
-            progress_frame, text="Track Goals", command=track_financial_goals)
-        progress_button.grid(row=2, column=0)
-
-        root.mainloop()
-
-    def fetch_transactions(self, file_path):
-        try:
-            with open(file_path, 'r') as file:
-                transaction_data = json.load(file)
-            return transaction_data
-        except FileNotFoundError:
-            messagebox.showerror(
-                "File Not Found", "Please select a valid transaction data file.")
-            return []
-
-    def get_user_preferences(self):
-        user_preferences = {}
-        return user_preferences
-
-    def get_financial_goals(self):
-        financial_goals = {}
-        return financial_goals
-
-    def get_risk_tolerance(self):
-        risk_tolerance = ""
-        return risk_tolerance
-
-
-class PersonalAssistant:
-    def __init__(self):
-        self.expense_manager = ExpenseManager()
-
-    def execute_program(self):
-        self.expense_manager.execute_program()
-
-
-personal_assistant = PersonalAssistant()
-personal_assistant.execute_program()
+        optimization_list =
